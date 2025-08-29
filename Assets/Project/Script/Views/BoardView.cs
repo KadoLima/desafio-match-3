@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using DG.Tweening;
+﻿using DG.Tweening;
+using Gazeus.DesafioMatch3.Effects;
 using Gazeus.DesafioMatch3.Models;
 using Gazeus.DesafioMatch3.ScriptableObjects;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,9 +16,14 @@ namespace Gazeus.DesafioMatch3.Views
         [SerializeField] private GridLayoutGroup _boardContainer;
         [SerializeField] private TilePrefabRepository _tilePrefabRepository;
         [SerializeField] private TileSpotView _tileSpotPrefab;
+        [SerializeField] private BoardEffects _boardEffects;
 
         private GameObject[][] _tiles;
         private TileSpotView[][] _tileSpots;
+
+        public BoardEffects BoardEffects => _boardEffects;
+
+        public event Action FinishedCreatingVisualBoard;
 
         public void CreateBoard(List<List<Tile>> board)
         {
@@ -44,12 +50,16 @@ namespace Gazeus.DesafioMatch3.Views
                     {
                         GameObject tilePrefab = _tilePrefabRepository.TileTypePrefabList[tileTypeIndex];
                         GameObject tile = Instantiate(tilePrefab);
-                        tileSpot.SetTile(tile);
 
+                        tile.transform.localScale = Vector3.zero;
+                        tileSpot.SetTile(tile);
                         _tiles[y][x] = tile;
                     }
                 }
             }
+
+            _boardEffects.FinishedInitialBoardEffects += () => FinishedCreatingVisualBoard?.Invoke();
+            _boardEffects.PlayBoardSpawnEffect(_tiles);
         }
 
         public Tween CreateTile(List<AddedTileInfo> addedTiles)
@@ -69,6 +79,7 @@ namespace Gazeus.DesafioMatch3.Views
                 _tiles[position.y][position.x] = tile;
 
                 tile.transform.localScale = Vector2.zero;
+
                 sequence.Join(tile.transform.DOScale(1.0f, 0.2f));
             }
 
@@ -80,7 +91,9 @@ namespace Gazeus.DesafioMatch3.Views
             for (int i = 0; i < matchedPosition.Count; i++)
             {
                 Vector2Int position = matchedPosition[i];
-                Destroy(_tiles[position.y][position.x]);
+
+                PlayAnimationAndDestroyTile(_tiles[position.y][position.x]);
+
                 _tiles[position.y][position.x] = null;
             }
 
@@ -126,6 +139,14 @@ namespace Gazeus.DesafioMatch3.Views
             (_tiles[toY][toX], _tiles[fromY][fromX]) = (_tiles[fromY][fromX], _tiles[toY][toX]);
 
             return sequence;
+        }
+
+        private void PlayAnimationAndDestroyTile(GameObject targetTIle)
+        {
+            TileTextEffect tileTextEffect = targetTIle.GetComponentInParent<TileTextEffect>();
+            tileTextEffect.Show();
+
+            Destroy(targetTIle);
         }
 
         #region Events
