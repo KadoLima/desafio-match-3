@@ -7,20 +7,22 @@ namespace Gazeus.DesafioMatch3.Effects
 {
     public class GameEventListener : MonoBehaviour
     {
-        [SerializeField] private GameEventSO Event;
-        [SerializeField] private UnityEvent Response;
+        [SerializeField] private GameEventSO _event;
+        [SerializeField] private UnityEvent _response;
         [Tooltip("Delay before calling Response")]
-        [SerializeField] private float delay = 0;
+        [SerializeField] private float _delay = 0;
 
+        #region Unity
         public void OnEnable()
         {
-            Event.RegisterListener(this);
+            _event.RegisterListener(this);
         }
 
         private void OnDisable()
         {
-            Event.UnregisterListener(this);
+            _event.UnregisterListener(this);
         }
+        #endregion
 
         public void OnEventRaised()
         {
@@ -29,8 +31,8 @@ namespace Gazeus.DesafioMatch3.Effects
 
         private IEnumerator OnEventRaised_Coroutine()
         {
-            yield return new WaitForSeconds(delay);
-            Response.Invoke();
+            yield return new WaitForSeconds(_delay);
+            _response.Invoke();
         }
     }
 }
