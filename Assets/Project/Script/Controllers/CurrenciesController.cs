@@ -7,11 +7,14 @@ namespace Gazeus.DesafioMatch3.Controllers
     public class CurrenciesController : MonoBehaviour
     {
         [SerializeField] private List<PlayerCurrencySO> _playerCurrencies = new();
+        [SerializeField] private GeneralGameRulesSO _generalGameRules;
 
+        #region Unity
         private void Start()
         {
             ResetValues();
         }
+        #endregion
 
         private void ResetValues()
         {
@@ -21,7 +24,7 @@ namespace Gazeus.DesafioMatch3.Controllers
             }
         }
 
-        public void AddAmount(PlayerCurrencySO currency, int amountToAdd)
+        public void AddAmount(PlayerCurrencySO currency, int tilesDestroyed)
         {
             if (!_playerCurrencies.Contains(currency))
             {
@@ -33,7 +36,9 @@ namespace Gazeus.DesafioMatch3.Controllers
             {
                 if (_playerCurrencies[i] == currency)
                 {
-                    _playerCurrencies[i].AddAmount(amountToAdd);
+                    var totalReward = _generalGameRules.PointsPerTile * tilesDestroyed;
+                    _playerCurrencies[i].AddAmount(totalReward);
+                    Debug.LogWarning($"Destroyed {tilesDestroyed} tiles. Rewarding {totalReward}");
                 }
             }
         }

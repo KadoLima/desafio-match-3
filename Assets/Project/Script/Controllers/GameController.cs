@@ -1,29 +1,48 @@
-using System;
-using System.Collections.Generic;
 using DG.Tweening;
 using Gazeus.DesafioMatch3.Core;
 using Gazeus.DesafioMatch3.Models;
+using Gazeus.DesafioMatch3.ScriptableObjects;
 using Gazeus.DesafioMatch3.Views;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gazeus.DesafioMatch3.Controllers
 {
     public class GameController : MonoBehaviour
     {
+        [Header("BOARD")]
         [SerializeField] private BoardView _boardView;
         [SerializeField] private int _boardHeight = 10;
         [SerializeField] private int _boardWidth = 10;
+
+        [Header("SCORE REWARD")]
+        [SerializeField] private CurrenciesController _currenciesController;
+        [SerializeField] private PlayerCurrencySO _matchRewardCurrency;
+
+        [Header("GAME RULES")]
+        [SerializeField] private GeneralGameRulesSO _generalGameRules;
+
+        [Space(10)]
+        [SerializeField] private UnityEvent validMatchEvent;
 
         private GameService _gameEngine;
         private bool _isAnimating;
         private int _selectedX = -1;
         private int _selectedY = -1;
+        private bool _isPlayable = false;
 
         #region Unity
         private void Awake()
         {
             _gameEngine = new GameService();
+            _gameEngine.SetupGameRules(_generalGameRules);
+
+            SpecialTileEffectsRegistry.Register(SpecialType.CLEAR_LINE, new ClearLineEffect());
+
             _boardView.TileClicked += OnTileClick;
+            _boardView.FinishedCreatingVisualBoard += OnFinishedCreatingVisualBoard;
         }
 
         private void OnDestroy()
@@ -42,6 +61,8 @@ namespace Gazeus.DesafioMatch3.Controllers
         {
             BoardSequence boardSequence = boardSequences[index];
 
+            HandleReward(boardSequence.MatchedPosition);
+
             Sequence sequence = DOTween.Sequence();
             sequence.Append(_boardView.DestroyTiles(boardSequence.MatchedPosition));
             sequence.Append(_boardView.MoveTiles(boardSequence.MovedTiles));
@@ -58,13 +79,31 @@ namespace Gazeus.DesafioMatch3.Controllers
             }
         }
 
+        private void HandleReward(List<Vector2Int> matchedPosition)
+        {
+            validMatchEvent.Invoke();
+
+            _currenciesController.AddAmount(_matchRewardCurrency, matchedPosition.Count);
+        }
+
         private void OnTileClick(int x, int y)
         {
+            if (!_isPlayable) return;
+
             if (_isAnimating) return;
 
             if (_selectedX > -1 && _selectedY > -1)
             {
-                if (Mathf.Abs(_selectedX - x) + Mathf.Abs(_selectedY - y) > 1)
+                // Ex: Tile (7,4) clicado primeiro. Tile (7,5) clicado segundo.
+                // (7,4) -> (7,5) 
+                // |7-7| + |4-5| = 0 + 1 = 1 portanto ADJACENTE. 
+                //Distância Manhattan em Grids.
+                // Ex: Tile (7,4) clicado primeiro. Tile (2,5) clicado segundo.
+                // (7,4) -> (2,5) 
+                // |7-2| + |4-5| = 5 + 1 = 6 portanto NÃO ADJACENTE. 
+                //Distância Manhattan em Grids.
+                //|fromX - toX| + |fromY - toY| == 1
+                if (Mathf.Abs(_selectedX - x) + Mathf.Abs(_selectedY - y) > 1) //NÃO ADJACENTE!
                 {
                     _selectedX = -1;
                     _selectedY = -1;
@@ -94,6 +133,16 @@ namespace Gazeus.DesafioMatch3.Controllers
                 _selectedX = x;
                 _selectedY = y;
             }
+        }
+
+        private void OnFinishedCreatingVisualBoard()
+        {
+            TogglePlayable(true);
+        }
+
+        private void TogglePlayable(bool newState)
+        {
+            _isPlayable = newState;
         }
     }
 }
