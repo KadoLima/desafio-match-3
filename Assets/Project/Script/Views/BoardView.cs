@@ -15,6 +15,7 @@ namespace Gazeus.DesafioMatch3.Views
 
         [SerializeField] private GridLayoutGroup _boardContainer;
         [SerializeField] private TilePrefabRepository _tilePrefabRepository;
+        [SerializeField] private SpecialTilePrefabRepository _specialTilePrefabRepository;
         [SerializeField] private TileSpotView _tileSpotPrefab;
         [SerializeField] private BoardEffects _boardEffects;
 
@@ -45,12 +46,26 @@ namespace Gazeus.DesafioMatch3.Views
 
                     _tileSpots[y][x] = tileSpot;
 
-                    int tileTypeIndex = board[y][x].Type;
-                    if (tileTypeIndex > -1)
+                    Tile tileData = board[y][x];
+                    if (tileData.Type > -1)
                     {
-                        GameObject tilePrefab = _tilePrefabRepository.TileTypePrefabList[tileTypeIndex];
-                        GameObject tile = Instantiate(tilePrefab);
+                        GameObject tilePrefab = null;
 
+                        if (tileData.SpecialType != SpecialType.NONE)
+                        {
+                            tilePrefab = _specialTilePrefabRepository.GetPrefab(tileData.SpecialType);
+                            if (tilePrefab == null)
+                            {
+                                Debug.LogWarning($"[BoardView] No special prefab for {tileData.SpecialType}.");
+                                tilePrefab = _tilePrefabRepository.TileTypePrefabList[tileData.Type];
+                            }
+                        }
+                        else
+                        {
+                            tilePrefab = _tilePrefabRepository.TileTypePrefabList[tileData.Type];
+                        }
+
+                        GameObject tile = Instantiate(tilePrefab);
                         tile.transform.localScale = Vector3.zero;
                         tileSpot.SetTile(tile);
                         _tiles[y][x] = tile;
@@ -65,21 +80,33 @@ namespace Gazeus.DesafioMatch3.Views
         public Tween CreateTile(List<AddedTileInfo> addedTiles)
         {
             Sequence sequence = DOTween.Sequence();
+
             for (int i = 0; i < addedTiles.Count; i++)
             {
-                AddedTileInfo addedTileInfo = addedTiles[i];
-                Vector2Int position = addedTileInfo.Position;
+                AddedTileInfo info = addedTiles[i];
+                Vector2Int pos = info.Position;
 
-                TileSpotView tileSpot = _tileSpots[position.y][position.x];
+                TileSpotView spot = _tileSpots[pos.y][pos.x];
 
-                GameObject tilePrefab = _tilePrefabRepository.TileTypePrefabList[addedTileInfo.Type];
-                GameObject tile = Instantiate(tilePrefab);
-                tileSpot.SetTile(tile);
+                GameObject prefab = null;
+                if (info.SpecialType != SpecialType.NONE)
+                {
+                    prefab = _specialTilePrefabRepository.GetPrefab(info.SpecialType);
+                    if (prefab == null)
+                    {
+                        prefab = _tilePrefabRepository.TileTypePrefabList[info.Type];
+                    }
+                }
+                else
+                {
+                    prefab = _tilePrefabRepository.TileTypePrefabList[info.Type];
+                }
 
-                _tiles[position.y][position.x] = tile;
+                GameObject tile = Instantiate(prefab);
+                spot.SetTile(tile);
+                _tiles[pos.y][pos.x] = tile;
 
                 tile.transform.localScale = Vector2.zero;
-
                 sequence.Join(tile.transform.DOScale(1.0f, 0.2f));
             }
 
@@ -88,16 +115,27 @@ namespace Gazeus.DesafioMatch3.Views
 
         public Tween DestroyTiles(List<Vector2Int> matchedPosition)
         {
+            Sequence sequence = DOTween.Sequence();
+
             for (int i = 0; i < matchedPosition.Count; i++)
             {
-                Vector2Int position = matchedPosition[i];
+                Vector2Int pos = matchedPosition[i];
+                GameObject tile = _tiles[pos.y][pos.x];
 
-                PlayAnimationAndDestroyTile(_tiles[position.y][position.x]);
+                if (tile == null) continue;
 
-                _tiles[position.y][position.x] = null;
+                Transform tileTransform = tile.transform;
+                tileTransform.DOKill();
+
+                var tileSpot = _tileSpots[pos.y][pos.x];
+                tileSpot.PlayDestroyParticles();
+
+                sequence.Join(tileTransform.DOScale(0f, 0.1f).OnComplete(() => Destroy(tile.gameObject)));
+
+                _tiles[pos.y][pos.x] = null;
             }
 
-            return DOVirtual.DelayedCall(0.2f, () => { });
+            return sequence;
         }
 
         public Tween MoveTiles(List<MovedTileInfo> movedTiles)
@@ -139,14 +177,6 @@ namespace Gazeus.DesafioMatch3.Views
             (_tiles[toY][toX], _tiles[fromY][fromX]) = (_tiles[fromY][fromX], _tiles[toY][toX]);
 
             return sequence;
-        }
-
-        private void PlayAnimationAndDestroyTile(GameObject targetTIle)
-        {
-            TileTextEffect tileTextEffect = targetTIle.GetComponentInParent<TileTextEffect>();
-            tileTextEffect.Show();
-
-            Destroy(targetTIle);
         }
 
         #region Events
