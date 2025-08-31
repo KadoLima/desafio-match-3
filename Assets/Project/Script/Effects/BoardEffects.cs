@@ -31,10 +31,12 @@ namespace Gazeus.DesafioMatch3.Effects
 
         public event Action FinishedInitialBoardEffects;
 
+        #region Unity
         private void Awake()
         {
             _originalPosition = transform.localPosition;
         }
+        #endregion
 
         public void PlayBoardSpawnEffect(GameObject[][] tiles)
         {
