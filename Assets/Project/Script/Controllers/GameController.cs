@@ -25,19 +25,23 @@ namespace Gazeus.DesafioMatch3.Controllers
         [SerializeField] private GeneralGameRulesSO _generalGameRules;
 
         [Space(10)]
-        [SerializeField] private UnityEvent validMatchEvent;
+        [SerializeField] private UnityEvent _validMatchEvent;
 
-        private GameService _gameEngine;
+        private GameService _gameService;
         private bool _isAnimating;
         private int _selectedX = -1;
         private int _selectedY = -1;
         private bool _isPlayable = false;
 
+        private float _idleTimer;
+        private Vector3 _lastMousePos;
+        private bool _hintShown;
+
         #region Unity
         private void Awake()
         {
-            _gameEngine = new GameService();
-            _gameEngine.SetupGameRules(_generalGameRules);
+            _gameService = new GameService();
+            _gameService.SetupGameRules(_generalGameRules);
 
             SpecialTileEffectsRegistry.Register(SpecialType.CLEAR_LINE, new ClearLineEffect());
             SpecialTileEffectsRegistry.Register(SpecialType.COLOR_BOMB, new ColorBombEffect());
@@ -53,8 +57,13 @@ namespace Gazeus.DesafioMatch3.Controllers
 
         private void Start()
         {
-            List<List<Tile>> board = _gameEngine.StartGame(_boardWidth, _boardHeight);
+            List<List<Tile>> board = _gameService.StartGame(_boardWidth, _boardHeight);
             _boardView.CreateBoard(board);
+        }
+
+        private void Update()
+        {
+            ShowHintIfPossible();
         }
         #endregion
 
@@ -82,7 +91,7 @@ namespace Gazeus.DesafioMatch3.Controllers
 
         private void HandleReward(List<Vector2Int> matchedPosition)
         {
-            validMatchEvent.Invoke();
+            _validMatchEvent.Invoke();
 
             _currenciesController.AddAmount(_matchRewardCurrency, matchedPosition.Count);
         }
@@ -112,13 +121,15 @@ namespace Gazeus.DesafioMatch3.Controllers
                 }
                 else
                 {
+                    ResetIdleAndClearHint();
+
                     _isAnimating = true;
                     _boardView.SwapTiles(_selectedX, _selectedY, x, y).onComplete += () =>
                     {
-                        bool isValid = _gameEngine.IsValidMovement(_selectedX, _selectedY, x, y);
+                        bool isValid = _gameService.IsValidMovement(_selectedX, _selectedY, x, y);
                         if (isValid)
                         {
-                            List<BoardSequence> swapResult = _gameEngine.SwapTile(_selectedX, _selectedY, x, y);
+                            List<BoardSequence> swapResult = _gameService.SwapTile(_selectedX, _selectedY, x, y);
 
                             AnimateBoard(swapResult, 0, () =>
                             {
@@ -155,6 +166,49 @@ namespace Gazeus.DesafioMatch3.Controllers
         private void TogglePlayable(bool newState)
         {
             _isPlayable = newState;
+        }
+
+        private void ShowHintIfPossible()
+        {
+            if (!_isPlayable) return;
+
+            if (!_generalGameRules.ShowHint) return;
+
+            if (_isAnimating)
+            {
+                ResetIdleAndClearHint();
+                _idleTimer = 0f;
+                return;
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                ResetIdleAndClearHint();
+                _idleTimer = 0f;
+                return;
+            }
+
+            _idleTimer += Time.deltaTime;
+
+            if (!_hintShown && _idleTimer >= _generalGameRules.HintIdleSeconds && _selectedX == -1 && _selectedY == -1)
+            {
+                if (_gameService.TryFindHint(out var from))
+                {
+                    _boardView.ClearAllHints();
+                    _boardView.ShowHintAt(from);
+                    _hintShown = true;
+                }
+            }
+        }
+
+        private void ResetIdleAndClearHint()
+        {
+            _idleTimer = 0f;
+            if (_hintShown)
+            {
+                _boardView.ClearAllHints();
+                _hintShown = false;
+            }
         }
     }
 }

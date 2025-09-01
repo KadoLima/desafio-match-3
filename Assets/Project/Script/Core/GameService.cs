@@ -445,5 +445,36 @@ namespace Gazeus.DesafioMatch3.Core
 
             return validSpecialTileTypes[index];
         }
+
+        public bool TryFindHint(out Vector2Int from)
+        {
+            from = new Vector2Int(-1, -1);
+
+            int height = _boardTiles.Count;
+            int width = _boardTiles[0].Count;
+
+            var candidates = new List<(Vector2Int from, Vector2Int to)>(width * height * 2);
+
+            for (int y = 0; y < height; y++)
+                for (int x = 0; x < width; x++)
+                {
+                    if (x + 1 < width && IsValidMovement(x, y, x + 1, y))
+                    {
+                        candidates.Add((new Vector2Int(x, y), new Vector2Int(x + 1, y)));
+                    }
+
+                    if (y + 1 < height && IsValidMovement(x, y, x, y + 1))
+                    {
+                        candidates.Add((new Vector2Int(x, y), new Vector2Int(x, y + 1)));
+                    }
+                }
+
+            if (candidates.Count == 0) return false;
+
+            int randomCandidate = Random.Range(0, candidates.Count);
+            from = candidates[randomCandidate].from;
+
+            return true;
+        }
     }
 }

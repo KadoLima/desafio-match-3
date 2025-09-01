@@ -237,6 +237,24 @@ namespace Gazeus.DesafioMatch3.Views
             return t.DOScale(1.0f, _duration);
         }
 
+        public void ClearAllHints()
+        {
+            if (_tileSpots == null) return;
+
+            for (int y = 0; y < _tileSpots.Length; y++)
+            {
+                for (int x = 0; x < _tileSpots[y].Length; x++)
+                {
+                    _tileSpots[y][x].SetHintHighlight(false);
+                }
+            }
+        }
+
+        public void ShowHintAt(Vector2Int pos)
+        {
+            _tileSpots[pos.y][pos.x].SetHintHighlight(true);
+        }
+
         #region Events
         private void TileSpot_Clicked(int x, int y)
         {
