@@ -33,6 +33,8 @@ namespace Gazeus.DesafioMatch3.UI
 
         private void AnimateScoreText(PlayerCurrencySO currency, int newValue)
         {
+            if (_currencyToTrack != currency) return;
+
             _countTween?.Kill();
 
             _countTween = DOVirtual.Int(
