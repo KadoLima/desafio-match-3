@@ -12,23 +12,25 @@ namespace Gazeus.DesafioMatch3.Views
 
         [SerializeField] private Button _button;
         [SerializeField] private TileParticleEffect _tileParticleEffect;
-        private Image _currentTileImage;
+        private GameObject _currentTile;
 
         private int _x;
         private int _y;
 
         #region Unity
+
         private void Awake()
         {
             _button.onClick.AddListener(OnTileClick);
         }
+
         #endregion
 
         public Tween AnimatedSetTile(GameObject tile)
         {
             tile.transform.SetParent(transform);
             tile.transform.DOKill();
-            _currentTileImage = tile.GetComponent<Image>();
+            _currentTile = tile;
 
             return tile.transform.DOMove(transform.position, 0.3f);
         }
@@ -43,7 +45,7 @@ namespace Gazeus.DesafioMatch3.Views
         {
             tile.transform.SetParent(transform, false);
             tile.transform.position = transform.position;
-            _currentTileImage = tile.GetComponent<Image>();
+            _currentTile = tile;
         }
 
         private void OnTileClick()
@@ -51,10 +53,15 @@ namespace Gazeus.DesafioMatch3.Views
             Clicked?.Invoke(_x, _y);
         }
 
-        public void PlayDestroyParticles()
+        public void PlayDestroyParticles_Default()
         {
-            _tileParticleEffect.PlayDestroyParticles(_currentTileImage.color);
-            _currentTileImage = null;
+            Image currentTileImage = _currentTile.GetComponent<Image>();
+            _tileParticleEffect.PlayDestroyParticles(currentTileImage.color);
+        }
+
+        public void PlayDestroyParticles_ColorBomb()
+        {
+            _tileParticleEffect.PlayColorBombEffect();
         }
     }
 }

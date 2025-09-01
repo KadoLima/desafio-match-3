@@ -27,10 +27,24 @@ namespace Gazeus.DesafioMatch3.Core
 
             (newBoard[toY][toX], newBoard[fromY][fromX]) = (newBoard[fromY][fromX], newBoard[toY][toX]);
 
-            if (newBoard[fromY][fromX].SpecialType != SpecialType.NONE ||
-                newBoard[toY][toX].SpecialType != SpecialType.NONE)
+            var a = newBoard[fromY][fromX];
+            var b = newBoard[toY][toX];
+
+            if (a.SpecialType != SpecialType.NONE || b.SpecialType != SpecialType.NONE)
             {
-                return true;
+                ISpecialEffect effect = null;
+
+                if (!SpecialTileEffectsRegistry.TryGet(a.SpecialType, out effect))
+                {
+                    SpecialTileEffectsRegistry.TryGet(b.SpecialType, out effect);
+                }
+
+                if (effect != null)
+                {
+                    List<Vector2Int> cleared = effect.GetClearedPositions(newBoard, new Vector2Int(fromX, fromY), new Vector2Int(toX, toY));
+
+                    if (cleared != null && cleared.Count > 0) return true;
+                }
             }
 
             for (int y = 0; y < newBoard.Count; y++)
@@ -78,227 +92,67 @@ namespace Gazeus.DesafioMatch3.Core
 
             (newBoard[toY][toX], newBoard[fromY][fromX]) = (newBoard[fromY][fromX], newBoard[toY][toX]);
 
-            List<BoardSequence> boardSequences = new();
+            List<BoardSequence> sequences = new List<BoardSequence>();
 
-            //Checking if any of the tiles are a special type..
             Tile a = newBoard[fromY][fromX];
             Tile b = newBoard[toY][toX];
 
-            ISpecialEffect effect = null;
-
-            if (!SpecialTileEffectsRegistry.TryGet(a.SpecialType, out effect))
+            if (TryGetSpecialEffect(a, b, out var effect))
             {
-                SpecialTileEffectsRegistry.TryGet(b.SpecialType, out effect);
-            }
+                List<Vector2Int> cleared = effect.GetClearedPositions(newBoard, new Vector2Int(fromX, fromY), new Vector2Int(toX, toY));
 
-            //Special Tile Effect
-            if (effect != null)
-            {
-                List<Vector2Int> matchedPosition = effect.GetClearedPositions(
-                    newBoard,
-                    new Vector2Int(fromX, fromY),
-                    new Vector2Int(toX, toY)
-                );
+                SpecialType cause = (a.SpecialType != SpecialType.NONE) ? a.SpecialType : b.SpecialType;
 
-                for (int i = 0; i < matchedPosition.Count; i++)
+                BoardSequence sequence = MakeSequence(newBoard, cleared, cause);
+                sequences.Add(sequence);
+
+                var matched = FindMatches(newBoard);
+
+                while (HasMatch(matched))
                 {
-                    Vector2Int p = matchedPosition[i];
-
-                    if (newBoard[p.y][p.x].SpecialType != SpecialType.NONE)
+                    var clearedMatch = new List<Vector2Int>();
+                    for (int y = 0; y < newBoard.Count; y++)
                     {
-                        _specialCount = Mathf.Max(0, _specialCount - 1);
-                    }
-
-                    newBoard[p.y][p.x] = new Tile { Id = -1, Type = -1, SpecialType = SpecialType.NONE };
-                }
-
-                Dictionary<int, MovedTileInfo> movedTiles = new();
-                List<MovedTileInfo> movedTilesList = new();
-
-                for (int i = 0; i < matchedPosition.Count; i++)
-                {
-                    int x = matchedPosition[i].x;
-                    int y = matchedPosition[i].y;
-
-                    if (y > 0)
-                    {
-                        for (int j = y; j > 0; j--)
+                        for (int x = 0; x < newBoard[y].Count; x++)
                         {
-                            Tile movedTile = newBoard[j - 1][x];
-                            newBoard[j][x] = movedTile;
-
-                            if (movedTile.Type > -1)
-                            {
-                                if (movedTiles.ContainsKey(movedTile.Id))
-                                {
-                                    movedTiles[movedTile.Id].To = new Vector2Int(x, j);
-                                }
-                                else
-                                {
-                                    MovedTileInfo movedTileInfo = new()
-                                    {
-                                        From = new Vector2Int(x, j - 1),
-                                        To = new Vector2Int(x, j)
-                                    };
-                                    movedTiles.Add(movedTile.Id, movedTileInfo);
-                                    movedTilesList.Add(movedTileInfo);
-                                }
-                            }
-                        }
-
-                        newBoard[0][x] = new Tile { Id = -1, Type = -1, SpecialType = SpecialType.NONE };
-                    }
-                }
-
-                List<AddedTileInfo> addedTiles = new();
-
-                for (int y = newBoard.Count - 1; y > -1; y--)
-                {
-                    for (int x = newBoard[y].Count - 1; x > -1; x--)
-                    {
-                        if (newBoard[y][x].Type == -1)
-                        {
-                            int tileType = Random.Range(0, _tilesTypes.Count);
-                            Tile tile = newBoard[y][x];
-                            tile.Id = _tileCount++;
-                            tile.Type = _tilesTypes[tileType];
-                            tile.SpecialType = SpecialType.NONE;
-
-                            if (_specialCount < _maxSpecials && Random.value < _specialChance)
-                            {
-                                tile.SpecialType = SpecialType.CLEAR_LINE;
-                                _specialCount++;
-                            }
-
-                            addedTiles.Add(new AddedTileInfo
-                            {
-                                Position = new Vector2Int(x, y),
-                                Type = tile.Type,
-                                SpecialType = tile.SpecialType
-                            });
+                            if (matched[y][x]) clearedMatch.Add(new Vector2Int(x, y));
                         }
                     }
+
+                    BoardSequence sequenceCascade = MakeSequence(newBoard, clearedMatch);
+                    sequences.Add(sequenceCascade);
+
+                    matched = FindMatches(newBoard);
                 }
 
-                boardSequences.Add(new BoardSequence
-                {
-                    MatchedPosition = matchedPosition,
-                    MovedTiles = movedTilesList,
-                    AddedTiles = addedTiles
-                });
+                _boardTiles = newBoard;
+                return sequences;
             }
 
-            List<List<bool>> matchedTiles = FindMatches(newBoard);
+            var matchedTiles = FindMatches(newBoard);
 
             while (HasMatch(matchedTiles))
             {
-                //Cleaning the matched tiles
-                List<Vector2Int> matchedPosition = new();
+                var cleared = new List<Vector2Int>();
                 for (int y = 0; y < newBoard.Count; y++)
                 {
                     for (int x = 0; x < newBoard[y].Count; x++)
                     {
-                        if (matchedTiles[y][x])
-                        {
-                            matchedPosition.Add(new Vector2Int(x, y));
-
-                            if (newBoard[y][x].SpecialType != SpecialType.NONE)
-                            {
-                                _specialCount = Mathf.Max(0, _specialCount - 1);
-                            }
-
-                            newBoard[y][x] = new Tile { Id = -1, Type = -1 };
-                        }
+                        if (matchedTiles[y][x]) cleared.Add(new Vector2Int(x, y));
                     }
                 }
 
-                // Dropping the tiles
-                Dictionary<int, MovedTileInfo> movedTiles = new();
-                List<MovedTileInfo> movedTilesList = new();
-                for (int i = 0; i < matchedPosition.Count; i++)
-                {
-                    int x = matchedPosition[i].x;
-                    int y = matchedPosition[i].y;
-                    if (y > 0)
-                    {
-                        for (int j = y; j > 0; j--)
-                        {
-                            Tile movedTile = newBoard[j - 1][x];
-                            newBoard[j][x] = movedTile;
-                            if (movedTile.Type > -1)
-                            {
-                                if (movedTiles.ContainsKey(movedTile.Id))
-                                {
-                                    movedTiles[movedTile.Id].To = new Vector2Int(x, j);
-                                }
-                                else
-                                {
-                                    MovedTileInfo movedTileInfo = new()
-                                    {
-                                        From = new Vector2Int(x, j - 1),
-                                        To = new Vector2Int(x, j)
-                                    };
-                                    movedTiles.Add(movedTile.Id, movedTileInfo);
-                                    movedTilesList.Add(movedTileInfo);
-                                }
-                            }
-                        }
+                var sequence = MakeSequence(newBoard, cleared);
+                sequences.Add(sequence);
 
-                        newBoard[0][x] = new Tile
-                        {
-                            Id = -1,
-                            Type = -1
-                        };
-                    }
-                }
-
-                // Filling the board
-                List<AddedTileInfo> addedTiles = new();
-                for (int y = newBoard.Count - 1; y > -1; y--)
-                {
-                    for (int x = newBoard[y].Count - 1; x > -1; x--)
-                    {
-                        if (newBoard[y][x].Type == -1)
-                        {
-                            int tileType = Random.Range(0, _tilesTypes.Count);
-                            Tile tile = newBoard[y][x];
-                            tile.Id = _tileCount++;
-                            tile.Type = _tilesTypes[tileType];
-                            tile.SpecialType = SpecialType.NONE;
-
-                            if (_specialCount < _maxSpecials && Random.value < _specialChance)
-                            {
-                                tile.SpecialType = SpecialType.CLEAR_LINE;
-                                _specialCount++;
-                            }
-
-                            addedTiles.Add(new AddedTileInfo
-                            {
-                                Position = new Vector2Int(x, y),
-                                Type = tile.Type,
-                                SpecialType = tile.SpecialType
-                            });
-                        }
-                    }
-                }
-
-                BoardSequence sequence = new()
-                {
-                    MatchedPosition = matchedPosition,
-                    MovedTiles = movedTilesList,
-                    AddedTiles = addedTiles
-                };
-
-                boardSequences.Add(sequence);
                 matchedTiles = FindMatches(newBoard);
             }
 
             _boardTiles = newBoard;
-
-            return boardSequences;
+            return sequences;
         }
 
-        private static List<List<Tile>> CopyBoard(List<List<Tile>> boardToCopy)
+        private List<List<Tile>> CopyBoard(List<List<Tile>> boardToCopy)
         {
             List<List<Tile>> newBoard = new(boardToCopy.Count);
             for (int y = 0; y < boardToCopy.Count; y++)
@@ -355,7 +209,7 @@ namespace Gazeus.DesafioMatch3.Core
 
                     if (_specialCount < _maxSpecials && Random.value < _specialChance)
                     {
-                        board[y][x].SpecialType = SpecialType.CLEAR_LINE;
+                        board[y][x].SpecialType = GetRandomSpecialType();
                         _specialCount++;
                     }
                 }
@@ -410,7 +264,152 @@ namespace Gazeus.DesafioMatch3.Core
             return matchedTiles;
         }
 
-        private static bool HasMatch(List<List<bool>> list)
+        private bool TryGetSpecialEffect(Tile a, Tile b, out ISpecialEffect effect)
+        {
+            if (SpecialTileEffectsRegistry.TryGet(a.SpecialType, out effect)) return true;
+            if (SpecialTileEffectsRegistry.TryGet(b.SpecialType, out effect)) return true;
+
+            effect = null;
+
+            return false;
+        }
+
+        private void ClearPositions(List<List<Tile>> board, List<Vector2Int> positions)
+        {
+            for (int i = 0; i < positions.Count; i++)
+            {
+                var p = positions[i];
+                if (board[p.y][p.x].SpecialType != SpecialType.NONE)
+                {
+                    _specialCount = Mathf.Max(0, _specialCount - 1);
+                }
+
+                board[p.y][p.x] = new Tile { Id = -1, Type = -1, SpecialType = SpecialType.NONE };
+            }
+        }
+
+        private List<MovedTileInfo> DropColumns(List<List<Tile>> board, List<Vector2Int> cleared)
+        {
+            var movedDict = new Dictionary<int, MovedTileInfo>();
+            var movedList = new List<MovedTileInfo>();
+
+            for (int i = 0; i < cleared.Count; i++)
+            {
+                int x = cleared[i].x;
+                int y = cleared[i].y;
+
+                if (y > 0)
+                {
+                    for (int j = y; j > 0; j--)
+                    {
+                        Tile movedTile = board[j - 1][x];
+                        board[j][x] = movedTile;
+
+                        if (movedTile.Type > -1)
+                        {
+                            if (movedDict.TryGetValue(movedTile.Id, out var info))
+                            {
+                                info.To = new Vector2Int(x, j);
+                            }
+                            else
+                            {
+                                var infoNew = new MovedTileInfo
+                                {
+                                    From = new Vector2Int(x, j - 1),
+                                    To = new Vector2Int(x, j)
+                                };
+
+                                movedDict[movedTile.Id] = infoNew;
+                                movedList.Add(infoNew);
+                            }
+                        }
+                    }
+
+                    board[0][x] = new Tile { Id = -1, Type = -1, SpecialType = SpecialType.NONE };
+                }
+            }
+
+            return movedList;
+        }
+
+        private List<AddedTileInfo> FillEmpties(List<List<Tile>> board)
+        {
+            var added = new List<AddedTileInfo>();
+
+            for (int y = board.Count - 1; y >= 0; y--)
+            {
+                for (int x = board[y].Count - 1; x >= 0; x--)
+                {
+                    if (board[y][x].Type == -1)
+                    {
+                        int typeIndex = Random.Range(0, _tilesTypes.Count);
+                        var t = board[y][x];
+                        t.Id = _tileCount++;
+                        t.Type = _tilesTypes[typeIndex];
+                        t.SpecialType = SpecialType.NONE;
+
+                        if (_specialCount < _maxSpecials && Random.value < _specialChance)
+                        {
+                            t.SpecialType = GetRandomSpecialType();
+
+                            if (t.SpecialType != SpecialType.NONE)
+                            {
+                                _specialCount++;
+                            }
+                        }
+
+                        added.Add(new AddedTileInfo
+                        {
+                            Position = new Vector2Int(x, y),
+                            Type = t.Type,
+                            SpecialType = t.SpecialType
+                        });
+                    }
+                }
+            }
+
+            return added;
+        }
+
+        private BoardSequence MakeSequence(List<List<Tile>> board, List<Vector2Int> clearedPositions)
+        {
+            ClearPositions(board, clearedPositions);
+
+            List<MovedTileInfo> moved = DropColumns(board, clearedPositions);
+            List<AddedTileInfo> added = FillEmpties(board);
+
+            return new BoardSequence
+            {
+                MatchedPosition = clearedPositions,
+                MovedTiles = moved,
+                AddedTiles = added
+            };
+        }
+
+        private BoardSequence MakeSequence(List<List<Tile>> board, List<Vector2Int> clearedPositions, SpecialType cause)
+        {
+            ClearPositions(board, clearedPositions);
+
+            List<MovedTileInfo> moved = DropColumns(board, clearedPositions);
+            List<AddedTileInfo> added = FillEmpties(board);
+
+            Dictionary<Vector2Int, SpecialType> destroyMap = new Dictionary<Vector2Int, SpecialType>(clearedPositions.Count);
+
+            for (int i = 0; i < clearedPositions.Count; i++)
+            {
+                destroyMap[clearedPositions[i]] = cause;
+            }
+
+            return new BoardSequence
+            {
+                MatchedPosition = clearedPositions,
+                MovedTiles = moved,
+                AddedTiles = added,
+                DestroyBySpecial = destroyMap
+            };
+        }
+
+        private bool HasMatch(List<List<bool>> list)
         {
             for (int y = 0; y < list.Count; y++)
             {
@@ -424,6 +423,27 @@ namespace Gazeus.DesafioMatch3.Core
             }
 
             return false;
+        }
+
+        private SpecialType GetRandomSpecialType()
+        {
+            var values = (SpecialType[])System.Enum.GetValues(typeof(SpecialType));
+
+            List<SpecialType> validSpecialTileTypes = new List<SpecialType>();
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                SpecialType specialType = values[i];
+
+                if (specialType != SpecialType.NONE)
+                {
+                    validSpecialTileTypes.Add(specialType);
+                }
+            }
+
+            int index = Random.Range(0, validSpecialTileTypes.Count);
+
+            return validSpecialTileTypes[index];
         }
     }
 }

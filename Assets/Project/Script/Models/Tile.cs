@@ -3,7 +3,8 @@
     public enum SpecialType
     {
         NONE,
-        CLEAR_LINE
+        CLEAR_LINE,
+        COLOR_BOMB
     }
 
     public class Tile

@@ -13,14 +13,20 @@ namespace Gazeus.DesafioMatch3.Views
     {
         public event Action<int, int> TileClicked;
 
+        [Header("REFERENCES")]
         [SerializeField] private GridLayoutGroup _boardContainer;
-        [SerializeField] private TilePrefabRepository _tilePrefabRepository;
-        [SerializeField] private SpecialTilePrefabRepository _specialTilePrefabRepository;
         [SerializeField] private TileSpotView _tileSpotPrefab;
+        [SerializeField] private SpecialTilePrefabRepository _specialTilePrefabRepository;
+        [SerializeField] private TilePrefabRepository _tilePrefabRepository;
         [SerializeField] private BoardEffects _boardEffects;
+
+        [Header("TILE SELECT TWEEN SETTINGS")]
+        [SerializeField] private float _tileSizeIncrease = 1.15f;
+        [SerializeField] private float _duration = 0.1f;
 
         private GameObject[][] _tiles;
         private TileSpotView[][] _tileSpots;
+        private Transform _selectedTransform;
 
         public BoardEffects BoardEffects => _boardEffects;
 
@@ -113,7 +119,7 @@ namespace Gazeus.DesafioMatch3.Views
             return sequence;
         }
 
-        public Tween DestroyTiles(List<Vector2Int> matchedPosition)
+        public Tween DestroyTiles(List<Vector2Int> matchedPosition, Dictionary<Vector2Int, SpecialType> destroyBySpecial)
         {
             Sequence sequence = DOTween.Sequence();
 
@@ -127,8 +133,20 @@ namespace Gazeus.DesafioMatch3.Views
                 Transform tileTransform = tile.transform;
                 tileTransform.DOKill();
 
+                SpecialType cause = SpecialType.NONE;
+                if (destroyBySpecial != null && destroyBySpecial.TryGetValue(pos, out var c))
+                {
+                    cause = c;
+                }
+
                 var tileSpot = _tileSpots[pos.y][pos.x];
-                tileSpot.PlayDestroyParticles();
+
+                PlayDestroyTileVisualEffect(cause, tileSpot);
+
+                if (_selectedTransform == tile.transform)
+                {
+                    _selectedTransform = null;
+                }
 
                 sequence.Join(tileTransform.DOScale(0f, 0.1f).OnComplete(() => Destroy(tile.gameObject)));
 
@@ -177,6 +195,46 @@ namespace Gazeus.DesafioMatch3.Views
             (_tiles[toY][toX], _tiles[fromY][fromX]) = (_tiles[fromY][fromX], _tiles[toY][toX]);
 
             return sequence;
+        }
+
+        private void PlayDestroyTileVisualEffect(SpecialType cause, TileSpotView tileSpot)
+        {
+            switch (cause)
+            {
+                case SpecialType.NONE:
+                    tileSpot.PlayDestroyParticles_Default();
+                    break;
+                case SpecialType.CLEAR_LINE:
+                    tileSpot.PlayDestroyParticles_Default();
+                    break;
+                case SpecialType.COLOR_BOMB:
+                    tileSpot.PlayDestroyParticles_ColorBomb();
+                    break;
+            }
+        }
+
+        public Tween SelectTile(int x, int y)
+        {
+            if (_tiles == null || y < 0 || y >= _tiles.Length) return null;
+            if (_tiles[y] == null || x < 0 || x >= _tiles[y].Length) return null;
+
+            var go = _tiles[y][x];
+            if (go == null) return null;
+
+            var t = go.transform;
+            t.DOKill();
+            _selectedTransform = t; 
+            return t.DOScale(_tileSizeIncrease, _duration);
+        }
+
+        public Tween DeselectSelected()
+        {
+            if (_selectedTransform == null) return null;
+
+            var t = _selectedTransform;
+            _selectedTransform = null;
+            t.DOKill();
+            return t.DOScale(1.0f, _duration);
         }
 
         #region Events
