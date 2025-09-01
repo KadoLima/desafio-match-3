@@ -1,0 +1,2120 @@
+fileFormatVersion: 2
+guid: 607421b93e525f74fac5bbb7e34d8ed9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ArrowsTilesheet_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 307
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff15a493d980677449017123d730d1f4
+      internalID: -70625817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_1
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 307
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dae451cfaac8454a826870f89f5a21d
+      internalID: -1673469481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 307
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3c9059c9fb45644c9177e6139faf37d
+      internalID: 291873109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_3
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 307
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2167431ca1341e04692be313ad019b8e
+      internalID: -2345548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_4
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 305
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8eb2dbdde83681478ebe32e804a370d
+      internalID: -1426599969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_5
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 305
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e7c4c61da79e2f4b8bc984ef10ec09c
+      internalID: -691110109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_6
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 305
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f41d4f7c30434e41b8cedad4b3429c7
+      internalID: 1467557377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_7
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 305
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9cdcaca1fa42f4fb32bdbbf2d35abb
+      internalID: -305441079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 291
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bf8a87e0d3139847a04ddb60eece2b6
+      internalID: -647286164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_9
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 291
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b06f1e17c1801d847828446af7d7dddf
+      internalID: -1479255217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_10
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 291
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ec003a66710e354990d9754306da9d6
+      internalID: -440899664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_11
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 291
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94268f3408a39d349ab6c350d1f431f2
+      internalID: 1139287077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_12
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 289
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e75f1a1b1c9ab84ba4134c27a371eb8
+      internalID: 1371305291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_13
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 289
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d708e06845132e0478ac1ee09013f84f
+      internalID: 218936927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_14
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 289
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52311d33e0c728b41b88405d31ecc1bf
+      internalID: -1682396039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_15
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 289
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be1d205ae24fd1f46bd2885f49c8e02f
+      internalID: 1133707819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_16
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 274
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a04025017bd20d4da4a72ba45d53165
+      internalID: -1670730227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_17
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 274
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f750e5dde6d724f46a5d7e024d183aa2
+      internalID: -1771659769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_18
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 274
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e39c452dd62b3749b89165849263650
+      internalID: 1686402825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_19
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 274
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 111cb93eb9bf2cd46bdd41b1ee162d4e
+      internalID: 874682038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_20
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 273
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a4e636f568c1204497ab5d37020a69a
+      internalID: -265744473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_21
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 273
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 771cfa439e1a3d649b7f0a504323d415
+      internalID: 1793122771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_22
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 273
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 514d1d3cdcbbe9b40a6b229b33d6a05d
+      internalID: -860057425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_23
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 273
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3172b2f8ac475746b4cbc332f1a1470
+      internalID: 310247026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_24
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 259
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cee9238191be684d9c53c078130b5b9
+      internalID: 386776238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_25
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 259
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0688809cf1ec3fe49a24cab7f9d2cc80
+      internalID: -488140659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_26
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 259
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fdbfca215387c74980cccffd3d350a7
+      internalID: 222249129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_27
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 259
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d49178d4507294e49a80be9aeecb3ca7
+      internalID: -1660666689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_28
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 258
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5393320c6f70ba14fa456e99d1933b01
+      internalID: -1391642183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_29
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 258
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94abf14a8039b4f44bef2342433c83f9
+      internalID: -320817411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_30
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 258
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24637db834575cf44b9a9ddfd5c78c03
+      internalID: -596939424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_31
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 258
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b96019dee702cff41aa06424dbd37a23
+      internalID: 901926305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_32
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 244
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3862a7eb6ed610408a65291d5a0c795
+      internalID: 1980659208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_33
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 244
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d78bff12b50bf3641a3797c0511b17ad
+      internalID: 1939608938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_34
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 242
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ac13d1f06e543449736e64da96482a
+      internalID: 732878734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_35
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 242
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b56fdb7916c053f4094b919387b025d2
+      internalID: -876833786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_36
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 219
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e71cc098251f721458d12c10da10dab2
+      internalID: 514249344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_37
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 219
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d3249a700941f4996f6262e0175061
+      internalID: 682976040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_38
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 219
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d055def0dd1400c4aa4ece9854060647
+      internalID: -1884487373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_39
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 219
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 282a69aad07a7da47b3a67512b9963a8
+      internalID: 894235486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_40
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 221
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 908383b1b5cebd440a9828d464b8fe9a
+      internalID: 1889390264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_41
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 221
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10271b40969d2a147a799b2c0e15945a
+      internalID: 1158884087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_42
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 221
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb834a5be02a0b479ce983d10110382
+      internalID: 141329758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_43
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 221
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 452c354c8b78a904dbe9a456686d9657
+      internalID: -1279887173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_44
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 195
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26ad42bfcd6b0ab4593788b16d3f9e2a
+      internalID: -1296623767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_45
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 195
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e19557c807cdda4d909a59190c06bd7
+      internalID: -2013282037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_46
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 195
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d333b53abda593418891925ba3f1e9c
+      internalID: -1157095261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_47
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 195
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a68fbd79f381af498803060bfd51462
+      internalID: 790189293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_48
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 200
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0397ce03b37a2ad469ba8cc9120bc4f0
+      internalID: -476140636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_49
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 200
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b437d0e1f81ada54c85a9a1716754e8c
+      internalID: -2043831107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_50
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 200
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c13c8405990ff94d84323c1fa6ff92e
+      internalID: 1750027779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_51
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 200
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1f7340b8b397854e8df076bc2039d61
+      internalID: -1786548021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_52
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 172
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeecd299b1ed00f449c97e7171bdcb39
+      internalID: -1619890838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_53
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 172
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 495558033e2112244b3ce55c0de967a3
+      internalID: 298850707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_54
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 172
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 554976e7f5eeb984cbb4a5057626c784
+      internalID: -546280859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_55
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 172
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf95e0e50ecb0e74eb7ba05b0c6c291d
+      internalID: -655224887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_56
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 180
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae84ab852ea9fab4587840e1642fa489
+      internalID: 117703431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_57
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 180
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2ff730cfeb82745b0d9cc0045d6066
+      internalID: 1170401493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_58
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 180
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b772e413ee50c794bb6c2c1cf0a29f5c
+      internalID: -187852831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_59
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 180
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21701c32873f3ff4b87b83a309da6759
+      internalID: 1900203389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_60
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 150
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c842f208cf238b419ce1753a1ec24ea
+      internalID: 1693951666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_61
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 150
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96d2485438ac6ab4fac150ed447f2e99
+      internalID: -1108525831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_62
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 150
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd61b9db1f3813c4cada50fdac77a661
+      internalID: -1158469320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_63
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 150
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e72dff9508bf2ad458a520ced2165530
+      internalID: -1375544446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_64
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 161
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7aee439be0332744bc9e230d439eae3
+      internalID: 1762901424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_65
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 161
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a932d44c4b3bffe4d8b358ec948bd287
+      internalID: -120037490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_66
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 161
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24d984e4784fdc54da1d97337cb07119
+      internalID: 1458628803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_67
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 161
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed83c2ea847445b42be26222c1c04ffa
+      internalID: 475410472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_68
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 127
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaebbe7c22d4c19449949c7fc28e97b1
+      internalID: 1003282716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_69
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 127
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce0098626fe6a614980e34985bad4633
+      internalID: -570903110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_70
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 140
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e1c6955c626da42b56f82908403fc4
+      internalID: -58796263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_71
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 140
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e06e13afa1dce714f8dc7f4fe99c4be1
+      internalID: 216969609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_72
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 102
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cfc1ba22e6b08f49a41fa7036432d13
+      internalID: 221574709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_73
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 102
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ca1d87d4e5db0d468789eaf480517c9
+      internalID: -333992101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_74
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 102
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a39b342c60a5f14eb801abec9a69874
+      internalID: 1465147969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_75
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 102
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e172004a785a4b4fbfcc27e4306579a
+      internalID: 1542115335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_76
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 79
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6f1c4b1654eccf4c8f455d5621646da
+      internalID: -518551762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_77
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 79
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f9410999611fce4a99268dbb7ab4d93
+      internalID: -306037054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_78
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 79
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a855908898915c64c8a5e4063d5abeb3
+      internalID: 1467931252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_79
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 79
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f59a51087c2609841ab26212e32ea18a
+      internalID: 657667935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_80
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 56
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec410be13d1dbec40a1fb90d33902072
+      internalID: 936580606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_81
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 56
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a19487ab2a195f24f98c5d69f635b889
+      internalID: 1129911308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_82
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 56
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7207e445b826e8f4380f705f7b257d88
+      internalID: 334427424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_83
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 56
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70ea2503fbc972d4797ce2f620847cf3
+      internalID: 1612653349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_84
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 34
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dccce903b84e1744a26e22a7405887e
+      internalID: -1977760789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_85
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 34
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c74a53a654a7e541b27f26b72f51131
+      internalID: -228044235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_86
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 34
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65d05ca4d7f2b464f890054a114de539
+      internalID: -77124551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_87
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 34
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 797684dfe6ed57e44bb1f5be6ccc428d
+      internalID: 1879890295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_88
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 11
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80a78dcaa0c029647bfc990aadd5f62f
+      internalID: -856764237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowsTilesheet_89
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 11
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a98fb61a0dfb4444a2a3361d4643810
+      internalID: -1586482808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ArrowsTilesheet_0: -70625817
+      ArrowsTilesheet_1: -1673469481
+      ArrowsTilesheet_10: -440899664
+      ArrowsTilesheet_11: 1139287077
+      ArrowsTilesheet_12: 1371305291
+      ArrowsTilesheet_13: 218936927
+      ArrowsTilesheet_14: -1682396039
+      ArrowsTilesheet_15: 1133707819
+      ArrowsTilesheet_16: -1670730227
+      ArrowsTilesheet_17: -1771659769
+      ArrowsTilesheet_18: 1686402825
+      ArrowsTilesheet_19: 874682038
+      ArrowsTilesheet_2: 291873109
+      ArrowsTilesheet_20: -265744473
+      ArrowsTilesheet_21: 1793122771
+      ArrowsTilesheet_22: -860057425
+      ArrowsTilesheet_23: 310247026
+      ArrowsTilesheet_24: 386776238
+      ArrowsTilesheet_25: -488140659
+      ArrowsTilesheet_26: 222249129
+      ArrowsTilesheet_27: -1660666689
+      ArrowsTilesheet_28: -1391642183
+      ArrowsTilesheet_29: -320817411
+      ArrowsTilesheet_3: -2345548
+      ArrowsTilesheet_30: -596939424
+      ArrowsTilesheet_31: 901926305
+      ArrowsTilesheet_32: 1980659208
+      ArrowsTilesheet_33: 1939608938
+      ArrowsTilesheet_34: 732878734
+      ArrowsTilesheet_35: -876833786
+      ArrowsTilesheet_36: 514249344
+      ArrowsTilesheet_37: 682976040
+      ArrowsTilesheet_38: -1884487373
+      ArrowsTilesheet_39: 894235486
+      ArrowsTilesheet_4: -1426599969
+      ArrowsTilesheet_40: 1889390264
+      ArrowsTilesheet_41: 1158884087
+      ArrowsTilesheet_42: 141329758
+      ArrowsTilesheet_43: -1279887173
+      ArrowsTilesheet_44: -1296623767
+      ArrowsTilesheet_45: -2013282037
+      ArrowsTilesheet_46: -1157095261
+      ArrowsTilesheet_47: 790189293
+      ArrowsTilesheet_48: -476140636
+      ArrowsTilesheet_49: -2043831107
+      ArrowsTilesheet_5: -691110109
+      ArrowsTilesheet_50: 1750027779
+      ArrowsTilesheet_51: -1786548021
+      ArrowsTilesheet_52: -1619890838
+      ArrowsTilesheet_53: 298850707
+      ArrowsTilesheet_54: -546280859
+      ArrowsTilesheet_55: -655224887
+      ArrowsTilesheet_56: 117703431
+      ArrowsTilesheet_57: 1170401493
+      ArrowsTilesheet_58: -187852831
+      ArrowsTilesheet_59: 1900203389
+      ArrowsTilesheet_6: 1467557377
+      ArrowsTilesheet_60: 1693951666
+      ArrowsTilesheet_61: -1108525831
+      ArrowsTilesheet_62: -1158469320
+      ArrowsTilesheet_63: -1375544446
+      ArrowsTilesheet_64: 1762901424
+      ArrowsTilesheet_65: -120037490
+      ArrowsTilesheet_66: 1458628803
+      ArrowsTilesheet_67: 475410472
+      ArrowsTilesheet_68: 1003282716
+      ArrowsTilesheet_69: -570903110
+      ArrowsTilesheet_7: -305441079
+      ArrowsTilesheet_70: -58796263
+      ArrowsTilesheet_71: 216969609
+      ArrowsTilesheet_72: 221574709
+      ArrowsTilesheet_73: -333992101
+      ArrowsTilesheet_74: 1465147969
+      ArrowsTilesheet_75: 1542115335
+      ArrowsTilesheet_76: -518551762
+      ArrowsTilesheet_77: -306037054
+      ArrowsTilesheet_78: 1467931252
+      ArrowsTilesheet_79: 657667935
+      ArrowsTilesheet_8: -647286164
+      ArrowsTilesheet_80: 936580606
+      ArrowsTilesheet_81: 1129911308
+      ArrowsTilesheet_82: 334427424
+      ArrowsTilesheet_83: 1612653349
+      ArrowsTilesheet_84: -1977760789
+      ArrowsTilesheet_85: -228044235
+      ArrowsTilesheet_86: -77124551
+      ArrowsTilesheet_87: 1879890295
+      ArrowsTilesheet_88: -856764237
+      ArrowsTilesheet_89: -1586482808
+      ArrowsTilesheet_9: -1479255217
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
