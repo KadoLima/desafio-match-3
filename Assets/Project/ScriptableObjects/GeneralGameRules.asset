@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pointsPerTile: 10
   _maxSpecialTilesOnBoard: 3
-  _chanceToSpawnSpecialTile: 0.15
+  _chanceToSpawnSpecialTile: 0.1
   _showHint: 1
   _hintIdleSeconds: 5
-  _hintIdleCheckInterval: 1
+  _fillPercentPerTileDestroyed: 0.5
+  _specialDurationSeconds: 20
+  _specialMeterMultiplier: 2

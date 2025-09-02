@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gazeus.DesafioMatch3.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "New GameEvent", menuName = "GameEvent")]
+    [CreateAssetMenu(fileName = "New GameEvent", menuName = "GameEvents/GameEvent")]
     public class GameEventSO : ScriptableObject
     {
         private List<GameEventListener> listeners = new List<GameEventListener>();

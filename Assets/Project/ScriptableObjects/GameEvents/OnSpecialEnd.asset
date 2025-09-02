@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 913a186bcd2ec144c8be9776f013edfa, type: 3}
-  m_Name: OnValidMatch
+  m_Script: {fileID: 11500000, guid: fd25e9ca20957c547ab625ca82aa0a09, type: 3}
+  m_Name: OnSpecialEnd
   m_EditorClassIdentifier: 
