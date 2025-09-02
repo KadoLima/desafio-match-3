@@ -25,7 +25,7 @@ namespace Gazeus.DesafioMatch3.Controllers
         [SerializeField] private GeneralGameRulesSO _generalGameRules;
 
         [Space(10)]
-        [SerializeField] private UnityEvent _validMatchEvent;
+        [SerializeField] private UnityEvent<float> ValidMatchEvent;
 
         private GameService _gameService;
         private bool _isAnimating;
@@ -71,7 +71,7 @@ namespace Gazeus.DesafioMatch3.Controllers
         {
             BoardSequence boardSequence = boardSequences[index];
 
-            HandleReward(boardSequence.MatchedPosition);
+            HandleMatchReward(boardSequence.MatchedPosition);
 
             Sequence sequence = DOTween.Sequence();
             sequence.Append(_boardView.DestroyTiles(boardSequence.MatchedPosition, boardSequence.DestroyBySpecial));
@@ -89,10 +89,9 @@ namespace Gazeus.DesafioMatch3.Controllers
             }
         }
 
-        private void HandleReward(List<Vector2Int> matchedPosition)
+        private void HandleMatchReward(List<Vector2Int> matchedPosition)
         {
-            _validMatchEvent.Invoke();
-
+            ValidMatchEvent.Invoke(matchedPosition.Count);
             _currenciesController.AddAmount(_matchRewardCurrency, matchedPosition.Count);
         }
 

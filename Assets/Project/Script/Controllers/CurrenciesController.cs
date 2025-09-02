@@ -9,6 +9,8 @@ namespace Gazeus.DesafioMatch3.Controllers
         [SerializeField] private List<PlayerCurrencySO> _playerCurrencies = new();
         [SerializeField] private GeneralGameRulesSO _generalGameRules;
 
+        private float _currentMultiplier = 1f;
+
         #region Unity
         private void Start()
         {
@@ -24,7 +26,7 @@ namespace Gazeus.DesafioMatch3.Controllers
             }
         }
 
-        public void AddAmount(PlayerCurrencySO currency, int tilesDestroyed)
+        public void AddAmount(PlayerCurrencySO currency, int tilesDestroyed = 0, bool shouldUseSpecialMultiplier = true)
         {
             if (!_playerCurrencies.Contains(currency))
             {
@@ -36,11 +38,16 @@ namespace Gazeus.DesafioMatch3.Controllers
             {
                 if (_playerCurrencies[i] == currency)
                 {
-                    var totalReward = _generalGameRules.PointsPerTile * tilesDestroyed;
+                    var calculatedMultiplier = shouldUseSpecialMultiplier == true ? _currentMultiplier : 1;
+                    var calculatedTilesDestroyed = tilesDestroyed == 0 ? 1 : tilesDestroyed;
+
+                    var totalReward = Mathf.CeilToInt(_generalGameRules.PointsPerTile * calculatedTilesDestroyed * calculatedMultiplier);
                     _playerCurrencies[i].AddAmount(totalReward);
-                    Debug.LogWarning($"Destroyed {tilesDestroyed} tiles. Rewarding {totalReward}");
                 }
             }
         }
+
+        public void SetDefaultMeterMultiplier() => _currentMultiplier = 1;
+        public void SetSpecialMeterMultiplier() => _currentMultiplier = _generalGameRules.SpecialMeterMultiplier;
     }
 }

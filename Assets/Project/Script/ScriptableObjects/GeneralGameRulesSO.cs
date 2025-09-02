@@ -16,10 +16,18 @@ namespace Gazeus.DesafioMatch3
         [SerializeField] private bool _showHint = true;
         [SerializeField] private float _hintIdleSeconds = 3f;
 
+        [Header("SPECIAL METER SETTINGS")]
+        [SerializeField] private float _fillPercentPerTileDestroyed = 5f;
+        [SerializeField] private float _specialDurationSeconds = 120f;
+        [SerializeField] private float _specialMeterMultiplier = 2f;
+
         public int PointsPerTile => _pointsPerTile;
         public int MaxSpecialTilesOnBoard => _maxSpecialTilesOnBoard;
         public float ChanceToSpawnSpecialTile => _chanceToSpawnSpecialTile;
         public float HintIdleSeconds => _hintIdleSeconds;
         public bool ShowHint => _showHint;
+        public float FillPercentPerTileDestroyed => _fillPercentPerTileDestroyed;
+        public float SpecialDurationSeconds => _specialDurationSeconds;
+        public float SpecialMeterMultiplier => _specialMeterMultiplier;
     }
 }
