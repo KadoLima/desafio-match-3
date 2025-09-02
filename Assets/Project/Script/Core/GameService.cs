@@ -293,39 +293,54 @@ namespace Gazeus.DesafioMatch3.Core
             var movedDict = new Dictionary<int, MovedTileInfo>();
             var movedList = new List<MovedTileInfo>();
 
+            int height = board.Count;
+            int width = board[0].Count;
+
+            bool[] targetToDropColumns = new bool[width];
             for (int i = 0; i < cleared.Count; i++)
             {
-                int x = cleared[i].x;
-                int y = cleared[i].y;
+                targetToDropColumns[cleared[i].x] = true;
+            }
 
-                if (y > 0)
+            for (int x = 0; x < width; x++)
+            {
+                if (!targetToDropColumns[x]) continue;
+
+                int writeRow = height - 1; 
+                for (int readRow = height - 1; readRow >= 0; readRow--)
                 {
-                    for (int j = y; j > 0; j--)
+                    Tile t = board[readRow][x];
+                    if (t.Type > -1)
                     {
-                        Tile movedTile = board[j - 1][x];
-                        board[j][x] = movedTile;
-
-                        if (movedTile.Type > -1)
+                        if (readRow != writeRow)
                         {
-                            if (movedDict.TryGetValue(movedTile.Id, out var info))
+                            board[writeRow][x] = t;
+
+                            if (movedDict.TryGetValue(t.Id, out var info))
                             {
-                                info.To = new Vector2Int(x, j);
+                                info.To = new Vector2Int(x, writeRow);
                             }
                             else
                             {
                                 var infoNew = new MovedTileInfo
                                 {
-                                    From = new Vector2Int(x, j - 1),
-                                    To = new Vector2Int(x, j)
+                                    From = new Vector2Int(x, readRow),
+                                    To = new Vector2Int(x, writeRow)
                                 };
-
-                                movedDict[movedTile.Id] = infoNew;
+                                movedDict[t.Id] = infoNew;
                                 movedList.Add(infoNew);
                             }
-                        }
-                    }
 
-                    board[0][x] = new Tile { Id = -1, Type = -1, SpecialType = SpecialType.NONE };
+                            board[readRow][x] = new Tile { Id = -1, Type = -1, SpecialType = SpecialType.NONE };
+                        }
+
+                        writeRow--; 
+                    }
+                }
+
+                for (int y = writeRow; y >= 0; y--)
+                {
+                    board[y][x] = new Tile { Id = -1, Type = -1, SpecialType = SpecialType.NONE };
                 }
             }
 
