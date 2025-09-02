@@ -32,6 +32,13 @@ namespace Gazeus.DesafioMatch3.Views
 
         public event Action FinishedCreatingVisualBoard;
 
+#if UNITY_EDITOR
+        private void Update()
+        {
+            Debug_CheckForDoubleTilesOnTileSpots();
+        }
+#endif
+
         public void CreateBoard(List<List<Tile>> board)
         {
             _boardContainer.constraintCount = board[0].Count;
@@ -260,6 +267,35 @@ namespace Gazeus.DesafioMatch3.Views
         {
             TileClicked(x, y);
         }
+        #endregion
+
+        #region Debug Methods (EDITOR ONLY)
+
+        private void Debug_CheckForDoubleTilesOnTileSpots()
+        {
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                for (int y = 0; y < _tileSpots.Length; y++)
+                {
+                    for (int x = 0; x < _tileSpots[y].Length; x++)
+                    {
+                        int childCount = _tileSpots[y][x].transform.childCount;
+                        int tileCount = 0;
+
+                        for (int i = 0; i < childCount; i++)
+                        {
+                            if (_tileSpots[y][x].transform.GetChild(i).name.Contains("Tile"))
+                            {
+                                tileCount++;
+                            }
+
+                            if (tileCount > 1) Debug.LogError($"[BoardView] Spot ({x},{y}) with {tileCount} tiles!");
+                        }
+                    }
+                }
+            }
+        }
+
         #endregion
     }
 }

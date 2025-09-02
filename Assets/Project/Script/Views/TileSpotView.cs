@@ -48,9 +48,9 @@ namespace Gazeus.DesafioMatch3.Views
 
         public void SetTile(GameObject tile)
         {
+            _currentTile = tile;
             tile.transform.SetParent(transform, false);
             tile.transform.position = transform.position;
-            _currentTile = tile;
         }
 
         private void OnTileClick()
