@@ -6,6 +6,7 @@ namespace Gazeus.DesafioMatch3.Controllers
 {
     public class CurrenciesController : MonoBehaviour
     {
+        [Header("REFERENCES")]
         [SerializeField] private List<PlayerCurrencySO> _playerCurrencies = new();
         [SerializeField] private GeneralGameRulesSO _generalGameRules;
 
@@ -41,7 +42,7 @@ namespace Gazeus.DesafioMatch3.Controllers
                     var calculatedMultiplier = shouldUseSpecialMultiplier == true ? _currentMultiplier : 1;
                     var calculatedTilesDestroyed = tilesDestroyed == 0 ? 1 : tilesDestroyed;
 
-                    var totalReward = Mathf.CeilToInt(_generalGameRules.PointsPerTile * calculatedTilesDestroyed * calculatedMultiplier);
+                    var totalReward = Mathf.CeilToInt(_generalGameRules.GoldPerTile * calculatedTilesDestroyed * calculatedMultiplier);
                     _playerCurrencies[i].AddAmount(totalReward);
                 }
             }

@@ -7,20 +7,31 @@ namespace Gazeus.DesafioMatch3.UI
 {
     public class ScoreUI : MonoBehaviour
     {
+        [Header("REFERENCES")]
+        [SerializeField] private RectTransform _content;
+        [SerializeField] private RectTransform _doublePointsIndicator;
         [SerializeField] private PlayerCurrencySO _currencyToTrack;
         [SerializeField] private GeneralGameRulesSO _generalGameRulesSO;
         [SerializeField] private TextMeshProUGUI _scoreText;
-        [SerializeField] private RectTransform _doublePointsIndicator;
+        [SerializeField] private TextMeshProUGUI _indicatorAmountText;
+
+        [Header("SHOW UI PARAMETERS")]
+        [Tooltip("Duration in seconds for the score panel to slide into view.")]
+        [SerializeField] private float _showMoveDuration = 0.5f;
 
         [Header("SCORE TEXT ANIMATION PARAMETERS")]
+        [Tooltip("Duration in seconds of the score increase counting animation.")]
         [SerializeField] private float _animationDuration = 0.3f;
+        [Tooltip("Scale multiplier applied to the score text during the animation.")]
         [SerializeField] private float _scaleAmount = 1.2f;
+        [Tooltip("Duration in seconds of the scale animation.")]
         [SerializeField] private float _scaleDuration = 0.1f;
 
         [Header("DOUBLE POINTS INDICATOR TWEEN PARAMETERS")]
+        [Tooltip("Rotation angle in degrees applied to the indicator during the wiggle animation.")]
         [SerializeField] private float _indicatorRotation = 10f;
+        [Tooltip("Duration in seconds for the double points indicator to show or hide.")]
         [SerializeField] private float _indicatorShowHideDuration = 0.25f;
-        [SerializeField] private TextMeshProUGUI _indicatorAmountText;
 
         private int _currentValue = 0;
         private Tween _countTween;
@@ -32,6 +43,8 @@ namespace Gazeus.DesafioMatch3.UI
         {
             _doublePointsIndicator.gameObject.SetActive(false);
             _indicatorAmountText.SetText("x" + _generalGameRulesSO.SpecialMeterMultiplier);
+
+            _content.anchoredPosition = new Vector2(0, 800);
         }
 
         private void OnEnable()
@@ -45,6 +58,8 @@ namespace Gazeus.DesafioMatch3.UI
             _countTween?.Kill();
         }
         #endregion
+
+        public void Show() => _content.DOAnchorPosY(0, _showMoveDuration).SetEase(Ease.OutExpo);
 
         private void AnimateScoreText(PlayerCurrencySO currency, int newValue)
         {

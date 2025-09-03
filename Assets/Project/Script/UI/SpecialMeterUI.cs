@@ -6,9 +6,14 @@ namespace Gazeus.DesafioMatch3.UI
 {
     public class SpecialMeterUI : MonoBehaviour
     {
-        [SerializeField] private Transform _content;
+        [Header("REFERENCES")]
+        [SerializeField] private RectTransform _content;
         [SerializeField] private Image _fillImage;
         [SerializeField] private Color _activeSpecialBarColor;
+
+        [Header("SHOW UI PARAMETERS")]
+        [Tooltip("Duration of the movement animation.")]
+        [SerializeField] private float _showMoveDuration = 0.5f;
 
         private Color _defaultColor;
 
@@ -16,7 +21,11 @@ namespace Gazeus.DesafioMatch3.UI
         {
             _fillImage.fillAmount = 0;
             _defaultColor = _fillImage.color;
+
+            _content.anchoredPosition = new Vector2(0, 800);
         }
+
+        public void Show() => _content.DOAnchorPosY(0, _showMoveDuration).SetEase(Ease.OutExpo);
 
         public void IncreaseFillAmount(float amountToAdd)
         {

@@ -21,7 +21,9 @@ namespace Gazeus.DesafioMatch3.Views
         [SerializeField] private BoardEffects _boardEffects;
 
         [Header("TILE SELECT TWEEN SETTINGS")]
+        [Tooltip("Scale increase amount when selecting a tile.")]
         [SerializeField] private float _tileSizeIncrease = 1.15f;
+        [Tooltip("Duration of the scale increase animation.")]
         [SerializeField] private float _duration = 0.1f;
 
         private GameObject[][] _tiles;
@@ -86,9 +88,10 @@ namespace Gazeus.DesafioMatch3.Views
                 }
             }
 
-            _boardEffects.FinishedInitialBoardEffects += () => FinishedCreatingVisualBoard?.Invoke();
             _boardEffects.PlayBoardSpawnEffect(_tiles);
         }
+
+        public void OnFinishedCreatingVisualBoard() => FinishedCreatingVisualBoard?.Invoke();
 
         public Tween CreateTile(List<AddedTileInfo> addedTiles)
         {
@@ -257,10 +260,7 @@ namespace Gazeus.DesafioMatch3.Views
             }
         }
 
-        public void ShowHintAt(Vector2Int pos)
-        {
-            _tileSpots[pos.y][pos.x].SetHintHighlight(true);
-        }
+        public void ShowHintAt(Vector2Int pos) => _tileSpots[pos.y][pos.x].SetHintHighlight(true);
 
         #region Events
         private void TileSpot_Clicked(int x, int y)

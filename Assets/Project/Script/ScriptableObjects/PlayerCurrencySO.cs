@@ -6,7 +6,9 @@ namespace Gazeus.DesafioMatch3.ScriptableObjects
     [CreateAssetMenu(fileName = "New Currency", menuName = "Currency")]
     public class PlayerCurrencySO : ScriptableObject
     {
+        [Tooltip("Initial amount of the currency when the game starts.")]
         [SerializeField] private int _startingAmount = 0;
+        [Tooltip("Maximum amount that can be stored.")]
         [SerializeField] private int _maxAmount = 99999;
 
         private int _currentAmount = 0;

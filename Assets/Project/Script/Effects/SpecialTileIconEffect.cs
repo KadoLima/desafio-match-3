@@ -5,7 +5,10 @@ namespace Gazeus.DesafioMatch3.Effects
 {
     public class SpecialTileIconEffect : MonoBehaviour
     {
-        [SerializeField] private float _stretchAmount = 1.1f;   
+        [Header("SETTINGS")]
+        [Tooltip("Scale multiplier applied on X or Y axis during the stretch effect.")]
+        [SerializeField] private float _stretchAmount = 1.1f;
+        [Tooltip("Duration in seconds of each stretch or return animation step.")]
         [SerializeField] private float _duration = 0.3f; 
 
         private Tween _loopTween;

@@ -10,9 +10,9 @@ namespace Gazeus.DesafioMatch3.Views
     {
         public event Action<int, int> Clicked;
 
+        [Header("REFERENCES")]
         [SerializeField] private Button _button;
         [SerializeField] private TileParticleEffect _tileParticleEffect;
-
         [SerializeField] private GameObject _highlight;
 
         private GameObject _currentTile;
@@ -64,10 +64,7 @@ namespace Gazeus.DesafioMatch3.Views
             _tileParticleEffect.PlayDestroyParticles(currentTileImage.color);
         }
 
-        public void PlayDestroyParticles_ColorBomb()
-        {
-            _tileParticleEffect.PlayColorBombEffect();
-        }
+        public void PlayDestroyParticles_ColorBomb() => _tileParticleEffect.PlayColorBombEffect();
 
         public void SetHintHighlight(bool newState)
         {

@@ -14,33 +14,33 @@ namespace Gazeus.DesafioMatch3.ScriptableObjects
             public GameObject prefab;
         }
 
-        [SerializeField] private SpecialTileEntry[] _entries;
+        [SerializeField] private SpecialTileEntry[] _specialTileEntries;
 
-        private Dictionary<SpecialType, GameObject> _map;
+        private Dictionary<SpecialType, GameObject> _specialTilesDict;
 
         private void Init()
         {
-            _map = new Dictionary<SpecialType, GameObject>();
+            _specialTilesDict = new Dictionary<SpecialType, GameObject>();
 
-            for (int i = 0; i < _entries.Length; i++)
+            for (int i = 0; i < _specialTileEntries.Length; i++)
             {
-                SpecialTileEntry entry = _entries[i];
+                SpecialTileEntry entry = _specialTileEntries[i];
 
-                if (!_map.ContainsKey(entry.type))
+                if (!_specialTilesDict.ContainsKey(entry.type))
                 {
-                    _map.Add(entry.type, entry.prefab);
+                    _specialTilesDict.Add(entry.type, entry.prefab);
                 }
             }
         }
 
         public GameObject GetPrefab(SpecialType type)
         {
-            if (_map == null) 
+            if (_specialTilesDict == null) 
             { 
                 Init();
             } 
 
-            if (_map.TryGetValue(type, out var prefab)) return prefab;
+            if (_specialTilesDict.TryGetValue(type, out var prefab)) return prefab;
 
             Debug.LogWarning($"[SpecialTileRepository] No prefab was set for {type}");
             return null;

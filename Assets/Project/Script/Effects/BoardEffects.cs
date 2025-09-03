@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gazeus.DesafioMatch3.Effects
 {
@@ -25,11 +26,12 @@ namespace Gazeus.DesafioMatch3.Effects
         [Tooltip("Number of vibrations during the effect.")]
         [SerializeField] private int vibrato = 10;
 
+        [SerializeField] private UnityEvent FinishedInitialBoardEffectsEvent;
+        
         private Ease _tileSpawnEase = Ease.OutBack;
         private Vector3 _originalPosition;
         private Tween _shakeTween;
 
-        public event Action FinishedInitialBoardEffects;
 
         #region Unity
         private void Awake()
@@ -61,7 +63,7 @@ namespace Gazeus.DesafioMatch3.Effects
                 }
             }
 
-            sequence.OnComplete(() => FinishedInitialBoardEffects?.Invoke());
+            sequence.OnComplete(() => FinishedInitialBoardEffectsEvent.Invoke());
             sequence.Play();
         }
 

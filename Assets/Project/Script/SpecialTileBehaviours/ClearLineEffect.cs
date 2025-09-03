@@ -18,12 +18,18 @@ namespace Gazeus.DesafioMatch3
             if (horizontal)
             {
                 int y = from.y;
-                for (int x = 0; x < width; x++) matched.Add(new Vector2Int(x, y));
+                for (int x = 0; x < width; x++)
+                {
+                    matched.Add(new Vector2Int(x, y));
+                }
             }
             else
             {
                 int x = from.x;
-                for (int y = 0; y < height; y++) matched.Add(new Vector2Int(x, y));
+                for (int y = 0; y < height; y++)
+                {
+                    matched.Add(new Vector2Int(x, y));
+                }
             }
 
             return matched;

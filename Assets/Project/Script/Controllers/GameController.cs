@@ -34,7 +34,6 @@ namespace Gazeus.DesafioMatch3.Controllers
         private bool _isPlayable = false;
 
         private float _idleTimer;
-        private Vector3 _lastMousePos;
         private bool _hintShown;
 
         #region Unity
@@ -103,16 +102,7 @@ namespace Gazeus.DesafioMatch3.Controllers
 
             if (_selectedX > -1 && _selectedY > -1)
             {
-                // Ex: Tile (7,4) clicado primeiro. Tile (7,5) clicado segundo.
-                // (7,4) -> (7,5) 
-                // |7-7| + |4-5| = 0 + 1 = 1 portanto ADJACENTE. 
-                //Distância Manhattan em Grids.
-                // Ex: Tile (7,4) clicado primeiro. Tile (2,5) clicado segundo.
-                // (7,4) -> (2,5) 
-                // |7-2| + |4-5| = 5 + 1 = 6 portanto NÃO ADJACENTE. 
-                //Distância Manhattan em Grids.
-                //|fromX - toX| + |fromY - toY| == 1
-                if (Mathf.Abs(_selectedX - x) + Mathf.Abs(_selectedY - y) > 1) //NÃO ADJACENTE!
+                if (Mathf.Abs(_selectedX - x) + Mathf.Abs(_selectedY - y) > 1)
                 {
                     _boardView.DeselectSelected();
                     _selectedX = -1;
@@ -157,15 +147,9 @@ namespace Gazeus.DesafioMatch3.Controllers
             }
         }
 
-        private void OnFinishedCreatingVisualBoard()
-        {
-            TogglePlayable(true);
-        }
+        private void OnFinishedCreatingVisualBoard() => TogglePlayable(true);
 
-        private void TogglePlayable(bool newState)
-        {
-            _isPlayable = newState;
-        }
+        private void TogglePlayable(bool newState) => _isPlayable = newState;
 
         private void ShowHintIfPossible()
         {

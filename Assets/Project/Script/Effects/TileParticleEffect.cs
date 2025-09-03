@@ -4,6 +4,7 @@ namespace Gazeus.DesafioMatch3.Effects
 {
     public class TileParticleEffect : MonoBehaviour
     {
+        [Header("REFERENCES")]
         [SerializeField] private ParticleSystem _defaultParticles;
         [SerializeField] private ParticleSystem _colorBombParticles;
 
