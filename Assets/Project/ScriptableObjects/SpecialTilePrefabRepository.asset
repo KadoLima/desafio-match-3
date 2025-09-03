@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe52525c37714344ae3412f2e9c17a9, type: 3}
   m_Name: SpecialTilePrefabRepository
   m_EditorClassIdentifier: 
-  _entries:
+  _specialTileEntries:
   - type: 1
     prefab: {fileID: 6588062894895293356, guid: 6b5b84eab2acf8d4a9059cae36f70a68, type: 3}
   - type: 2

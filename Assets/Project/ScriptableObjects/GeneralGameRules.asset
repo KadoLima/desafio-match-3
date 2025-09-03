@@ -17,6 +17,6 @@ MonoBehaviour:
   _chanceToSpawnSpecialTile: 0.1
   _showHint: 1
   _hintIdleSeconds: 5
-  _fillPercentPerTileDestroyed: 0.5
+  _fillPercentPerTileDestroyed: 0.35
   _specialDurationSeconds: 20
   _specialMeterMultiplier: 2
